@@ -203,6 +203,17 @@ class yards():
             if is_sprite_clipped:
                 sprite, sprite_dim, sprite_pos = _helper.edge_handler(map_dim, sprite_dim, sprite_pos, sprite)
 
+            # print(map_dim, sprite_dim, sprite_pos, sprite_path)
+            # print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+            # print()
+            # print()
+
+            ### If sprite position is negative, make it the absoulute value instead ~ TyE
+            if sprite_pos[0] < 0:
+                sprite_pos = (abs(sprite_pos[0]), sprite_pos[1])
+            elif sprite_pos[1] < 0:
+                sprite_pos = (sprite_pos[0], abs(sprite_pos[1]))
+
             new_image = _helper.draw_sprite_to_background(sprite, new_image, sprite_pos)
             sprite.close()
             bbox = _helper.get_bbox(map_dim, sprite_dim, sprite_pos)
